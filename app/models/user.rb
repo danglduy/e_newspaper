@@ -1,10 +1,12 @@
 class User < ApplicationRecord
-  has_secure_password
-
-  validates :email, presence: true
+  has_many :articles
 
   enum role: {
     writer: 0,
     moderator: 1,
   }
+
+  validates :email, presence: true
+
+  has_secure_password
 end
