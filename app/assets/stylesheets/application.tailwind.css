@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.is-invalid {
+  @apply border-red-500 focus:border-red-500 focus:ring-red-500 !important;
+}
