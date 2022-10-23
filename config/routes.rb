@@ -8,7 +8,14 @@ Rails.application.routes.draw do
     post :login, to: 'sessions#create'
     delete :logout, to: 'sessions#destroy'
 
-    resources :articles
+    resources :articles do
+      member do
+        post :request_review
+        post :approve
+        post :publish
+      end
+    end
+
     resources :users
   end
 end
