@@ -4,16 +4,44 @@ module Dashboard
       @articles = Article.all
     end
 
-    def new; end
+    def new
+      @article = Article.new
+    end
 
-    def show; end
+    def show
+      @article = Article.find(params[:id])
+    end
 
-    def create; end
+    def create
+      @article = Article.new(article_params.merge(user: current_user))
 
-    def edit; end
+      if @article.save
+        redirect_to dashboard_article_path(@article)
+      else
+        render :new, status: :unprocessable_entity
+      end
+    end
 
-    def update; end
+    def edit
+      @article = Article.find(params[:id])
+    end
+
+    def update
+      @article = Article.find(params[:id])
+
+      if @article.update(article_params)
+        redirect_to dashboard_article_path(@article)
+      else
+        render :edit, status: :unprocessable_entity
+      end
+    end
 
     def destroy; end
+
+    private
+
+    def article_params
+      params.require(:article).permit(:title, :status, :scheduled_published_at, :published_at)
+    end
   end
 end

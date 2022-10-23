@@ -1,0 +1,44 @@
+<div class="min-h-full">
+  <header class="bg-white shadow">
+    <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+        Article information
+      </h1>
+    </div>
+  </header>
+  <main>
+    <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
+      <!-- This example requires Tailwind CSS v2.0+ -->
+      <div class="overflow-hidden bg-white shadow sm:rounded-lg">
+        <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+          <dl class="sm:divide-y sm:divide-gray-200">
+            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+              <dt class="text-sm font-medium text-gray-500">Title</dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                <%= @article.title %>
+              </dd>
+            </div>
+            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+              <dt class="text-sm font-medium text-gray-500">Status</dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                <%= @article.status %>
+              </dd>
+            </div>
+            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+              <dt class="text-sm font-medium text-gray-500">Scheduled publishing date</dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                <%= @article.scheduled_published_at %>
+              </dd>
+            </div>
+            <div class="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
+              <dt class="text-sm font-medium text-gray-500">Published at</dt>
+              <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                <%= @article.published_at %>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
