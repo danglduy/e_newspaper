@@ -3,7 +3,7 @@
 This project is was initiated by this command
 
 ```bash
-  rails new e_newspaper --css tailwind -j esbuild --skip-test
+  rails new e_newspaper --database=postgresql --css tailwind -j esbuild --skip-test
 ```
 
 ## Technologies
