@@ -41,6 +41,8 @@ module Dashboard
     def request_review
       article = Article.find(params[:id])
 
+      authorize(article)
+
       if article.draft? && article.review!
         redirect_to dashboard_article_path(article)
       end
@@ -49,6 +51,8 @@ module Dashboard
     def approve
       article = Article.find(params[:id])
 
+      authorize(article)
+
       if article.review? && article.scheduled!
         redirect_to dashboard_article_path(article)
       end
@@ -56,6 +60,8 @@ module Dashboard
 
     def publish
       article = Article.find(params[:id])
+
+      authorize(article)
 
       if article.update(status: :published, published_at: Time.current)
         redirect_to dashboard_article_path(article)
