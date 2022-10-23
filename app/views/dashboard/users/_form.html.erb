@@ -1,0 +1,77 @@
+<%= form_with model: [:dashboard, user], class: "space-y-8" do |f| %>
+  <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+    <div class="space-y-6 sm:space-y-5">
+      <div>
+        <p class="mt-1 max-w-2xl text-sm text-gray-500">User informations</p>
+      </div>
+
+      <div class="space-y-6 sm:space-y-5">
+        <div
+          class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5"
+        >
+          <%= f.label :email, class: "block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2" do %>
+            Email
+          <% end %>
+          <div class="mt-1 sm:col-span-2 sm:mt-0">
+            <div class="flex max-w-lg rounded-md shadow-sm">
+              <%=
+                f.text_field :email,
+                             class:
+                               'block w-full min-w-0 flex-1 rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+              %>
+            </div>
+          </div>
+        </div>
+
+        <% if f.object.new_record? %>
+          <div
+            class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5"
+          >
+            <%= f.label :password, class: "block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2" do %>
+              Password
+            <% end %>
+            <div class="mt-1 sm:col-span-2 sm:mt-0">
+              <div class="flex max-w-lg rounded-md shadow-sm">
+                <%=
+                  f.password_field :password,
+                               class:
+                                 'block w-full min-w-0 flex-1 rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <% if policy(f.object).update_role? %>
+          <div
+            class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5"
+          >
+            <%= f.label :role, class: "block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2" do %>
+              Status
+            <% end %>
+            <div class="mt-1 sm:col-span-2 sm:mt-0">
+              <%=
+                f.select :role,
+                         User.roles.keys.map { |w| [w.capitalize, w] },
+                         {},
+                         {class:
+                           'mt-1 block rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'}
+              %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="pt-5 border-t border-t-gray-200">
+    <div class="flex justify-end">
+      <%= link_to "Back", dashboard_users_path, class: "rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
+      <button
+        type="submit"
+        class="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+<% end %>
