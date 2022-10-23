@@ -9,3 +9,6 @@ window.Alpine = Alpine
 document.addEventListener("DOMContentLoaded", function(event) {
   window.Alpine.start();
 });
+
+import "trix"
+import "@rails/actiontext"
