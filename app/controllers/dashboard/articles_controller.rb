@@ -38,10 +38,34 @@ module Dashboard
 
     def destroy; end
 
+    def request_review
+      article = Article.find(params[:id])
+
+      if article.draft? && article.review!
+        redirect_to dashboard_article_path(article)
+      end
+    end
+
+    def approve
+      article = Article.find(params[:id])
+
+      if article.review? && article.scheduled!
+        redirect_to dashboard_article_path(article)
+      end
+    end
+
+    def publish
+      article = Article.find(params[:id])
+
+      if article.update(status: :published, published_at: Time.current)
+        redirect_to dashboard_article_path(article)
+      end
+    end
+
     private
 
     def article_params
-      params.require(:article).permit(:title, :content, :status, :scheduled_published_at, :published_at)
+      params.require(:article).permit(:title, :content, :scheduled_published_at, :published_at)
     end
   end
 end
