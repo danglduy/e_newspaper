@@ -42,22 +42,24 @@
           </div>
         <% end %>
 
-        <div
-          class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5"
-        >
-          <%= f.label :role, class: "block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2" do %>
-            Status
-          <% end %>
-          <div class="mt-1 sm:col-span-2 sm:mt-0">
-            <%=
-              f.select :role,
-                       User.roles.keys.map { |w| [w.capitalize, w] },
-                       {},
-                       {class:
-                         'mt-1 block rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'}
-            %>
+        <% if policy(f.object).update_role? %>
+          <div
+            class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5"
+          >
+            <%= f.label :role, class: "block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2" do %>
+              Status
+            <% end %>
+            <div class="mt-1 sm:col-span-2 sm:mt-0">
+              <%=
+                f.select :role,
+                         User.roles.keys.map { |w| [w.capitalize, w] },
+                         {},
+                         {class:
+                           'mt-1 block rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'}
+              %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
