@@ -26,6 +26,21 @@
         <div
           class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5"
         >
+          <%= f.label :content, class: "block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2" do %>
+            Content
+          <% end %>
+          <div class="mt-1 sm:col-span-2 sm:mt-0">
+            <%=
+              f.rich_text_area :content,
+                          class:
+                            'block w-full max-w-lg rounded-md bg-white border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+            %>
+          </div>
+        </div>
+
+        <div
+          class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5"
+        >
           <%= f.label :status, class: "block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2" do %>
             Status
           <% end %>

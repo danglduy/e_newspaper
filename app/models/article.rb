@@ -8,5 +8,7 @@ class Article < ApplicationRecord
     published: 3,
   }
 
+  has_rich_text :content
+
   validates :title, presence: true
 end

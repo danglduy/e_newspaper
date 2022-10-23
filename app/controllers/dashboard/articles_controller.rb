@@ -41,7 +41,7 @@ module Dashboard
     private
 
     def article_params
-      params.require(:article).permit(:title, :status, :scheduled_published_at, :published_at)
+      params.require(:article).permit(:title, :content, :status, :scheduled_published_at, :published_at)
     end
   end
 end

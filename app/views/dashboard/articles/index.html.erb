@@ -60,6 +60,9 @@
                         Author
                       </th>
                       <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                        <span class="sr-only">View</span>
+                      </th>
+                      <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
                         <span class="sr-only">Edit</span>
                       </th>
                     </tr>
@@ -91,6 +94,16 @@
                           class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"
                         >
                           <%= article.user.email %>
+                        </td>
+                        <td
+                          class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
+                        >
+                          <%=
+                            link_to 'View',
+                                    dashboard_article_path(article),
+                                    class:
+                                      'text-indigo-600 hover:text-indigo-900'
+                          %>
                         </td>
                         <td
                           class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6"
